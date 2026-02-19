@@ -366,6 +366,26 @@ body{
   text-align:center;
   color:#fff;
 }
+.parallax-expox{
+  height:450px;
+
+  background-image:url("DOHA.jpeg"); /* tu imagen */
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  /* 🔥 EFECTO PARALLAX */
+  background-attachment:fixed;
+
+  position:relative;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+  color:#fff;
+}
 
 
 /* OVERLAY OSCURO */
