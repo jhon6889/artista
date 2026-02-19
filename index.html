@@ -165,388 +165,6 @@
 </div>
 
 
-
-<!-- inicio carrusel  -->
-<style>
-.slider-section {
-  --active-bg: url('monumento/1.jpg');
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* BACKGROUND FULL WIDTH */
-.slider-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: var(--active-bg);
-  background-size: cover;
-  background-position: center;
-  transition: background-image 0.6s ease;
-  z-index: 0;
-}
-
-/* Overlay oscuro elegante */
-.slider-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  z-index: 1;
-}
-
-/* CONTENEDOR CENTRAL */
-.slider-pro {
-  position: relative;
-  z-index: 2;
-  width: 90%;
-  max-width: 700px;
-  font-family: system-ui, sans-serif;
-}
-
-/* VISOR */
-.slider-viewport {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: 14px;
-}
-
-.slides {
-  display: flex;
-  height: 100%;
-  transition: transform 0.5s ease;
-}
-
-.slide {
-  min-width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-}
-
-/* FLECHAS */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 38px;
-  height: 38px;
-  background: rgba(0,0,0,0.7);
-  border: none;
-  border-radius: 50%;
-  color: #fff;
-  cursor: pointer;
-}
-
-.arrow.prev { left: 12px; }
-.arrow.next { right: 12px; }
-
-/* TITULO NEGRO */
-.caption {
-  margin-top: 15px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 18px;
-  color: #fff;
-}
-
-/* MINIATURAS */
-.thumbnails {
-  margin-top: 12px;
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-}
-
-.thumb {
-  flex: 0 0 65px;
-  height: 65px;
-  border-radius: 8px;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-  opacity: 0.6;
-  border: 2px solid transparent;
-  transition: 0.3s;
-}
-
-.thumb.active {
-  opacity: 1;
-  border-color: #fff;
-}
-
-@media (max-width: 600px){
-  .slider-section {
-    min-height: 80vh;
-  }
-  .arrow {
-    width: 32px;
-    height: 32px;
-  }
-}
-</style>
-
-<div class="slider-section" id="sliderSection">
-
-  <div class="slider-pro" id="slider1">
-
-    <div class="slider-viewport">
-      <div class="slides">
-        <div class="slide" data-bg="monumento/1.jpg" style="background-image:url('monumento/1.jpg')"></div>
-        <div class="slide" data-bg="monumento/2.jpg" style="background-image:url('monumento/2.jpg')"></div>
-        <div class="slide" data-bg="monumento/3.jpg" style="background-image:url('monumento/3.jpg')"></div>
-        <div class="slide" data-bg="monumento/4.jpg" style="background-image:url('monumento/4.jpg')"></div>
-        <div class="slide" data-bg="monumento/5.jpg" style="background-image:url('monumento/5.jpg')"></div>
-        <div class="slide" data-bg="monumento/6.jpg" style="background-image:url('monumento/6.jpg')"></div>
-      </div>
-
-      <button class="arrow prev">&#10094;</button>
-      <button class="arrow next">&#10095;</button>
-    </div>
-
-    <div class="caption">Saqueadores de Conventos (6b+)</div>
-    <div class="thumbnails"></div>
-
-  </div>
-</div>
-
-<script>
-  (function(){
-  const section = document.getElementById("sliderSection");
-  const slider = document.getElementById("slider1");
-  const slides = slider.querySelector(".slides");
-  const slide = slider.querySelectorAll(".slide");
-  const thumbsContainer = slider.querySelector(".thumbnails");
-  const prev = slider.querySelector(".prev");
-  const next = slider.querySelector(".next");
-  const caption = slider.querySelector(".caption");
-
-  const titles = [
-    "Saqueadores de Conventos (6b+)",
-    "Lucas (A2/V+)",
-    "El blues de los ojos bonitos (6a+)",
-    "Perros Salvajes (A4)",
-    "Toñin (7b)",
-    "El Clan de los Osos (A2)"
-  ];
-
-  let index = 0;
-
-  slide.forEach((s,i)=>{
-    const t = document.createElement("div");
-    t.classList.add("thumb");
-    t.style.backgroundImage = `url('${s.dataset.bg}')`;
-    t.addEventListener("click",()=>{
-      index = i;
-      update();
-    });
-    thumbsContainer.appendChild(t);
-  });
-
-  const thumbs = slider.querySelectorAll(".thumb");
-
-  function update(){
-    slides.style.transform = `translateX(-${index*100}%)`;
-    caption.textContent = titles[index];
-    section.style.setProperty("--active-bg", `url('${slide[index].dataset.bg}')`);
-    thumbs.forEach(t=>t.classList.remove("active"));
-    thumbs[index].classList.add("active");
-  }
-
-  next.addEventListener("click",()=>{
-    index = (index+1)%slide.length;
-    update();
-  });
-
-  prev.addEventListener("click",()=>{
-    index = (index-1+slide.length)%slide.length;
-    update();
-  });
-
-  let startX=0;
-  slides.addEventListener("touchstart",e=>{
-    startX=e.touches[0].clientX;
-  });
-  slides.addEventListener("touchend",e=>{
-    let endX=e.changedTouches[0].clientX;
-    if(startX-endX>50) next.click();
-    if(endX-startX>50) prev.click();
-  });
-
-  update();
-})();
-</script>
-<!-- fin carrusel  -->
-
-
-
-
-
-<!-- ===== PORTFOLIO HEADER ===== -->
-<section class="portfolio-header">
-  <div class="container">
-
-    <p class="portfolio-subtitle">Ultimas Exposiciones</p>
-
-    <h2 class="portfolio-title">
-      Doha Qatar 2025.
-    </h2>
-
-  </div>
-</section>
-
-
-<!-- ===== SERIES / GALERÍA ===== -->
-<section class="series">
-  <div class="container series-grid">
-
-    <div class="card">
-      <div class="img-box">
-        <img src="4.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>DOHA QATAR: PRINCIPES </h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img-box">
-        <img src="obra2.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>DOHA QATAR: PRINCIPE</h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img-box">
-        <img src="obra3.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>DOHA QATAR: PRINCIPE</h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="img-box">
-        <img src="asd.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>DOHA QATAR: PRINCIPES</h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="img-box">
-        <img src="1.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>DOHA QATAR: PRINCIPE</h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="img-box">
-        <img src="2.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>DOHA QATAR: PRINCIPE</h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-  </div>
-  
-</section>
-
-
-
-<!-- ===== SERIES / GALERÍA ===== -->
-<section class="series">
-  <div class="container series-grid">
-
-    <div class="card">
-      <div class="img-box">
-        <img src="obra4.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>ESCULTURA TOMA LATERAL</h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img-box">
-        <img src="obra5.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>ESCULTURA TOMA FRONTAL</h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img-box">
-        <img src="obra6.jpg" alt="">
-      </div>
-      <div class="card-text">
-        <h3>ESCULTURA ZOOM</h3>
-        <p>Editorial illustration enhances written content...</p>
-      </div>
-    </div>
-
-   
-    </div>
-
-  </div>
-</section>
-
-<main>
-
-
-
-
-
-<!-- LIGHTBOX -->
-<div id="lightbox">
-    <img id="lightbox-img" src="">
-</div>
-
-
-
-<script>
-const items = document.querySelectorAll('.gallery-item img');
-const lightbox = document.getElementById('lightbox');
-const lightImg = document.getElementById('lightbox-img');
-
-// abrir imagen grande
-items.forEach(img => {
-    img.addEventListener('click', () => {
-        lightImg.src = img.src;
-        lightbox.style.display = 'flex';
-    });
-});
-
-// cerrar al hacer click en el fondo
-lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-});
-</script>
-
-</main>
-
-
-
-
-
 <!-- MONUMENTO AL MINERO -->
 <style>
 
@@ -944,6 +562,161 @@ lb.addEventListener("click", () => lb.style.display = "none");
 })();
 </script>
 <!-- fin carrusel  -->
+
+
+<!-- ===== SERIES / GALERÍA ===== -->
+<section class="series">
+  <div class="container series-grid">
+
+    <div class="card">
+      <div class="img-box">
+        <img src="obra4.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>ESCULTURA TOMA LATERAL</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-box">
+        <img src="obra5.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>ESCULTURA TOMA FRONTAL</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-box">
+        <img src="obra6.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>ESCULTURA ZOOM</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+
+   
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===== PORTFOLIO HEADER ===== -->
+<section class="portfolio-header">
+  <div class="container">
+
+    <p class="portfolio-subtitle">Ultimas Exposiciones</p>
+
+    <h2 class="portfolio-title">
+      Doha Qatar 2025.
+    </h2>
+
+  </div>
+</section>
+
+
+<!-- ===== SERIES / GALERÍA ===== -->
+<section class="series">
+  <div class="container series-grid">
+
+    <div class="card">
+      <div class="img-box">
+        <img src="4.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>DOHA QATAR: PRINCIPES </h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-box">
+        <img src="obra2.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>DOHA QATAR: PRINCIPE</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-box">
+        <img src="obra3.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>DOHA QATAR: PRINCIPE</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box">
+        <img src="asd.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>DOHA QATAR: PRINCIPES</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box">
+        <img src="1.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>DOHA QATAR: PRINCIPE</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box">
+        <img src="2.jpg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>DOHA QATAR: PRINCIPE</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+<main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+      <img id="lightbox-img" src="">
+  </div>
+
+
+  <script>
+  const items = document.querySelectorAll('.gallery-item img');
+  const lightbox = document.getElementById('lightbox');
+  const lightImg = document.getElementById('lightbox-img');
+
+  // abrir imagen grande
+  items.forEach(img => {
+      img.addEventListener('click', () => {
+          lightImg.src = img.src;
+          lightbox.style.display = 'flex';
+      });
+  });
+
+  // cerrar al hacer click en el fondo
+  lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+  });
+  </script>
+
+</main>
+
+
+
+
+
 
 
 <!-- ===== FOOTER ===== -->
