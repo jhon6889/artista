@@ -13,17 +13,17 @@
 <header class="header">
   <div class="container nav">
 
-    <div class="logo">LOGO</div>
+    <div class="logo">Amagá - Colombia 2026</div>
 
     <!-- BOTON HAMBURGUESA -->
     <div class="menu-toggle" id="menu-toggle">☰</div>
 
     <nav>
       <ul class="menu" id="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Biografía</a></li>
-        <li><a href="#">Libro</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="biografia.html">Biografía</a></li>
+        <li><a href="libro.html">Libro</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       
       </ul>
     </nav>
@@ -327,6 +327,212 @@ ALOS MINEROS CAIDOS ES UN MONUMENTO A LA VID </h1>
   </div>
 
 </section>
+
+
+<!-- MONUMENTO AL MINERO -->
+<style>
+
+/* CONTENEDOR GENERAL */
+.monument-section {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    padding: 70px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* TITULOS */
+.monument-title {
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+}
+
+.monument-title h2 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.monument-title p {
+    font-size: 1.25rem;
+    color: #444;
+    line-height: 1.7;
+}
+
+/* GRID DE IMÁGENES */
+.monument-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* TARJETA DE IMAGEN */
+.monument-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: transform .4s ease;
+}
+
+.monument-card:hover {
+    transform: translateY(-6px);
+}
+
+/* IMÁGENES */
+.monument-card img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.monument-card:hover img {
+    transform: scale(1.12);
+}
+
+/* TITULO SOBRE LA IMAGEN */
+.monument-card .caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.65), transparent);
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* LIGHTBOX */
+.lightbox-bg {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+    z-index: 99999;
+}
+
+.lightbox-bg img {
+    max-width: 92%;
+    max-height: 92%;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+/* TEXTO ADICIONAL */
+.monument-description {
+    max-width: 900px;
+    margin: auto;
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* ANIMACIÓN FADE */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all .9s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<section class="monument-section fade-in">
+
+    <!-- TITULO -->
+    <div class="monument-title">
+        <h2>Monumento Tributo a los Mineros – Amagá</h2>
+
+        <p>
+            Esta obra escultórica celebra la historia minera del municipio de Amagá. Representa
+            la fuerza, el sacrificio y la memoria de quienes trabajaron incansablemente bajo la tierra.
+        </p>
+    </div>
+
+    <!-- TEXTO COMPLEMENTARIO -->
+    <div class="monument-description">
+        La pieza captura el espíritu guerrero del minero, simboliza su lucha diaria y honra la vida de cientos de trabajadores 
+        que dedicaron su existencia a la minería, actividad fundamental para el desarrollo del suroeste antioqueño.
+    </div>
+
+    <!-- GALERÍA PREMIUM -->
+    <div class="monument-gallery">
+
+        <div class="monument-card">
+            <img src="MINEROS/M.jpg" alt="Monumento 1">
+            <div class="caption">MINERO</div>
+        </div>
+
+        <div class="monument-card">
+            <img src="MINEROS/MM.jpg" alt="Monumento 2">
+            <div class="caption">Detalle escultórico principal</div>
+        </div>
+
+        <div class="monument-card">
+            <img src="mineros/MMM.jpg" alt="Monumento 3">
+            <div class="caption">Escultura desde ángulo lateral</div>
+        </div>
+
+        <div class="monument-card">
+            <img src="mineros/N.jpg" alt="Monumento 4">
+            <div class="caption">Texturas y acabado del material</div>
+        </div>
+
+        <div class="monument-card">
+            <img src="mineros/u.jpg" alt="Monumento 5">
+            <div class="caption">Contexto del monumento en Amagá</div>
+        </div>
+
+    </div>
+</section>
+
+
+<div class="lightbox-bg" id="lightbox">
+    <img id="lightbox-img" src="">
+</div>
+
+<script>
+// animación al hacer scroll
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add("visible");
+    });
+});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// lightbox
+const lb = document.getElementById("lightbox");
+const lbImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".monument-card img").forEach(img => {
+    img.addEventListener("click", () => {
+        lbImg.src = img.src;
+        lb.style.display = "flex";
+    });
+});
+
+// cerrar lightbox
+lb.addEventListener("click", () => lb.style.display = "none");
+</script>
+
+<!-- FIN MONUMENTO AL MINERO -->
 
 
 <!-- ===== FOOTER ===== -->

@@ -369,8 +369,8 @@ body{
 .parallax-expox{
   height:450px;
 
-  background-image:url("DOHA.jpeg"); /* tu imagen */
-  background-size:cover;
+
+  background-color: #31383d;
   background-position:center;
   background-repeat:no-repeat;
 
