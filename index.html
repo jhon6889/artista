@@ -21,11 +21,10 @@
     <nav>
       <ul class="menu" id="menu">
         <li><a href="#">Home</a></li>
-        <li><a href="#">Libro</a></li>
         <li><a href="#">Biografía</a></li>
-        <li><a href="#">Shop</a></li>
+        <li><a href="#">Libro</a></li>
         <li><a href="#">Contacto</a></li>
-        <li><a href="#">Mi cuenta</a></li>
+      
       </ul>
     </nav>
 
@@ -167,12 +166,127 @@
 
   </div>
 </section>
+
+<main>
+
+<style>
+/* ---- GALERÍA ---- */
+
+.gallery-container {
+    width: 100%;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: all .4s ease;
+}
+
+.gallery-item:hover img {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+
+/* ---- LIGHTBOX ---- */
+
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,.6);
+}
+
+#lightbox:active {
+    display: none;
+}
+
+/* ---- RESPONSIVE ---- */
+
+@media (max-width: 600px) {
+    .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+</style>
+
+
+
+<div class="gallery-container">
+
+    <!-- EJEMPLOS (sustituye por tus imágenes obra1.jpg, obra2.jpg, etc.) -->
+    <div class="gallery-item"><img src="obra1.jpg" alt=""></div>
+    <div class="gallery-item"><img src="obra2.jpg" alt=""></div>
+    <div class="gallery-item"><img src="obra3.jpg" alt=""></div>
+    <div class="gallery-item"><img src="obra4.jpg" alt=""></div>
+    <div class="gallery-item"><img src="obra5.jpg" alt=""></div>
+    <div class="gallery-item"><img src="obra6.jpg" alt=""></div>
+
+</div>
+
+
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+    <img id="lightbox-img" src="">
+</div>
+
+
+
+<script>
+const items = document.querySelectorAll('.gallery-item img');
+const lightbox = document.getElementById('lightbox');
+const lightImg = document.getElementById('lightbox-img');
+
+// abrir imagen grande
+items.forEach(img => {
+    img.addEventListener('click', () => {
+        lightImg.src = img.src;
+        lightbox.style.display = 'flex';
+    });
+});
+
+// cerrar al hacer click en el fondo
+lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+});
+</script>
+
+</main>
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
     <p>© 2026 Fernando Londoño Gil — Todos los derechos reservados</p>
   </div>
 </footer>
+
 
 
 <script src="script.js"></script>
