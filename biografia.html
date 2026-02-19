@@ -1,5 +1,7 @@
 
 <link rel="stylesheet" href="styles.css">
+
+
 <style>
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic');
@@ -169,6 +171,7 @@ html, body {
     }
 }
 </style>
+<!-- ===== HEADER ===== -->
 <header class="header">
   <div class="container nav">
 
@@ -189,8 +192,22 @@ html, body {
 
   </div>
 </header>
+<script>
+  const toggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("menu");
 
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
 
+  // Cambiar icono ☰ -> ✕
+  if(menu.classList.contains("active")){
+    toggle.textContent = "✕";
+  } else {
+    toggle.textContent = "☰";
+  }
+});
+
+</script>
 <div id="parallax-world-of-ugg">
   
 <section>
