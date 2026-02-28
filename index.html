@@ -30,12 +30,12 @@
 
   </div>
 </header>
-<!-- ===== fin HEADER ===== -->
+<!-- ===== FIN HEADER ===== -->
 
 
 
 
-<!-- =====PRESENTACION ===== -->
+<!-- ===== PRESENTACION ===== -->
 <section class="hero">
   <div class="container hero-content">
 
@@ -70,9 +70,205 @@
 
   </div>
 </section>
-<!-- ===== fin PRESENTACION ===== -->
+<!-- ===== FIN PRESENTACION ===== -->
 
 
+
+<!-- ===== RECORTES DE PRENSA===== -->
+
+<style>
+/* ============================================================
+   🔥 FIN  BLOQUE RECORTES DE PRENSA — Diseño brutal
+============================================================ */
+.press-block {
+  padding: 80px 20px;
+  background-image: url("https://images.unsplash.com/photo-1549880338-65ddcdfd017b");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.press-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000aa; /* oscurecer fondo */
+  backdrop-filter: blur(3px);
+}
+
+.press-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+/* Card */
+.press-card {
+  background: #ffffff10;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #ffffff20;
+  backdrop-filter: blur(6px);
+  transition: transform .4s ease, box-shadow .4s ease;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.press-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 30px #00000070;
+}
+
+.press-img {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.press-img img {
+  width: 100%;
+  display: block;
+  transition: transform .5s ease;
+}
+
+.press-card:hover img {
+  transform: scale(1.1);
+}
+
+.press-text {
+  margin-top: 20px;
+  color: #fff;
+}
+
+.press-text h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.press-text p {
+  font-size: 15px;
+  opacity: .8;
+}
+
+/* ================= MODAL ZOOM ==================== */
+
+.press-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000cc;
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.press-modal-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  animation: zoomIn .4s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.press-close {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.press-close:hover {
+  transform: scale(1.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .press-text h3 { font-size: 18px; }
+  .press-text p { font-size: 14px; }
+}
+</style>
+
+<section class="press-block">
+  <div class="press-container">
+
+    <!-- Card 1 -->
+    <div class="press-card" data-image="20.jpeg">
+      <div class="press-img">
+        <img src="20.jpeg" alt="Recorte 1">
+      </div>
+      <div class="press-text">
+        <h3>Reconocimiento al minero de Amagá</h3>
+        <p>Rindo tributo a mi pueblo y a sus mineros...</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="press-card" data-image="21.jpeg">
+      <div class="press-img">
+        <img src="21.jpeg" alt="Recorte 2">
+      </div>
+      <div class="press-text">
+        <h3>Reconocimiento del colombiano</h3>
+        <p>Exposición de mi obra en Chapultepec México...</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FIN RECORTES DE PRENSA  ===== -->
+
+
+
+<!-- Modal Zoom -->
+<div class="press-modal" id="pressModal">
+  <span class="press-close">&times;</span>
+  <img class="press-modal-img" id="pressModalImg">
+</div>
+
+<script>
+// ================== MODAL ZOOM ===================
+const modal = document.getElementById("pressModal");
+const modalImg = document.getElementById("pressModalImg");
+const closeBtn = document.querySelector(".press-close");
+
+document.querySelectorAll(".press-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const imgPath = card.getAttribute("data-image");
+    modalImg.src = imgPath;
+    modal.style.display = "flex";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) modal.style.display = "none";
+});
+</script>
 
 
 
