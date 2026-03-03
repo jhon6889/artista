@@ -274,6 +274,114 @@ modal.addEventListener("click", (e) => {
 <!-- ===== FIN RECORTES DE PRENSA  ===== -->
 
 
+<HR></HR>
+<!-- =============== seccion diseños ================= -->
+
+
+<style>
+.gallery2-section {
+  padding: 80px 20px;
+  background: #111;
+}
+
+.gallery2-grid {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.gallery2-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 0 25px #0008;
+  transition: transform .3s ease;
+  cursor: pointer;
+}
+
+.gallery2-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px #000b;
+}
+
+.gallery2-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.gallery2-item:hover img {
+  transform: scale(1.12);
+}
+
+/* ------ LIGHTBOX ------ */
+.lightbox2-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.lightbox2-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+@keyframes zoomIn {
+  0% { transform: scale(.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery2-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px) {
+  .gallery2-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+
+<section class="gallery2-section">
+  <div class="gallery2-grid">
+
+    <div class="gallery2-item">
+      <img src="diseños/1.jpeg" alt="">
+    </div>
+
+    <div class="gallery2-item">
+      <img src="diseños/2.jpeg" alt="">
+    </div>
+
+    <div class="gallery2-item">
+      <img src="diseños/3.jpeg" alt="">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox2-overlay" id="lightbox2">
+  <div class="lightbox2-imgbox">
+    <img id="lightbox2-img" src="">
+  </div>
+</div>
+
+
+<!-- =============== FIN seccion diseños ================= -->
+
 
 
 
@@ -381,6 +489,116 @@ modal.addEventListener("click", (e) => {
 
 </div>
 <!-- ===== fin seccin galeria  ===== -->
+
+
+
+<!-- =============== seccion diseños ================= -->
+
+
+<style>
+.gallery2-section {
+  padding: 80px 20px;
+  background: #111;
+}
+
+.gallery2-grid {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.gallery2-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 0 25px #0008;
+  transition: transform .3s ease;
+  cursor: pointer;
+}
+
+.gallery2-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px #000b;
+}
+
+.gallery2-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.gallery2-item:hover img {
+  transform: scale(1.12);
+}
+
+/* ------ LIGHTBOX ------ */
+.lightbox2-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.lightbox2-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+@keyframes zoomIn {
+  0% { transform: scale(.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery2-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px) {
+  .gallery2-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+
+<section class="gallery2-section">
+  <div class="gallery2-grid">
+
+    <div class="gallery2-item">
+      <img src="diseños/4.jpg" alt="">
+    </div>
+
+    <div class="gallery2-item">
+      <img src="diseños/5.png" alt="">
+    </div>
+
+    <div class="gallery2-item">
+      <img src="diseños/6.jpeg" alt="">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox2-overlay" id="lightbox2">
+  <div class="lightbox2-imgbox">
+    <img id="lightbox2-img" src="">
+  </div>
+</div>
+
+
+<!-- =============== FIN seccion diseños ================= -->
+
 
 
 
@@ -1442,9 +1660,7 @@ wrapper.addEventListener("click", () => {
         <div class="slide" data-bg="qatar/o.jpeg" style="background-image:url('qatar/o.jpeg')"></div>
   
       </div>
-
-      <button class="arrow prev">&#10094;</button>
-      <button class="arrow next">&#10095;</button>
+  
     </div>
 
     <div class="caption"> VISITANTES EN MI EXPOSICÓN DOHA 2025</div>
@@ -1453,72 +1669,7 @@ wrapper.addEventListener("click", () => {
   </div>
 </div>
 
-<script>
-  (function(){
-  const section = document.getElementById("sliderSection");
-  const slider = document.getElementById("slider1");
-  const slides = slider.querySelector(".slides");
-  const slide = slider.querySelectorAll(".slide");
-  const thumbsContainer = slider.querySelector(".thumbnails");
-  const prev = slider.querySelector(".prev");
-  const next = slider.querySelector(".next");
-  const caption = slider.querySelector(".caption");
 
-  const titles = [
-    "Con el señor alcalde de AMAGA ",
-    " Donacion al municipio obra de 5 metros en bronce a la cera perdida",
-    "Instalacion de la obra en el parque de amaga ",
-    "",
-    "",
-    ""
-  ];
-
-  let index = 0;
-
-  slide.forEach((s,i)=>{
-    const t = document.createElement("div");
-    t.classList.add("thumb");
-    t.style.backgroundImage = `url('${s.dataset.bg}')`;
-    t.addEventListener("click",()=>{
-      index = i;
-      update();
-    });
-    thumbsContainer.appendChild(t);
-  });
-
-  const thumbs = slider.querySelectorAll(".thumb");
-
-  function update(){
-    slides.style.transform = `translateX(-${index*100}%)`;
-    caption.textContent = titles[index];
-    section.style.setProperty("--active-bg", `url('${slide[index].dataset.bg}')`);
-    thumbs.forEach(t=>t.classList.remove("active"));
-    thumbs[index].classList.add("active");
-  }
-
-  next.addEventListener("click",()=>{
-    index = (index+1)%slide.length;
-    update();
-  });
-
-  prev.addEventListener("click",()=>{
-    index = (index-1+slide.length)%slide.length;
-    update();
-  });
-
-  let startX=0;
-  slides.addEventListener("touchstart",e=>{
-    startX=e.touches[0].clientX;
-  });
-  slides.addEventListener("touchend",e=>{
-    let endX=e.changedTouches[0].clientX;
-    if(startX-endX>50) next.click();
-    if(endX-startX>50) prev.click();
-  });
-
-  update();
-})();
-</script>
 <!-- fin carrusel 2 -->
 
 
