@@ -1050,10 +1050,7 @@ lb.addEventListener("click", () => lb.style.display = "none");
     <video id="verticalVideo" src="mineros.mp4"></video>
     <div class="play-btn"></div>
   </div>
-  <div class="video-wrapper" id="videoBlock">
-    <video id="verticalVideo" src="mineros.mp4"></video>
-    <div class="play-btn"></div>
-  </div>
+
 </section>
 
 <script>
@@ -1165,8 +1162,8 @@ wrapper.addEventListener("click", () => {
         <img src="obra1.jpg" alt="">
       </div>
       <div class="card-text">
-        <h3>DIRECCTORA GENERAL DEL QIAF </h3>
-        <p>junto a la directora del qiaf en Doha...</p>
+        <h3>DIRECTORA GENERAL DEL QIAF </h3>
+        <p>junto a la directora del qiaf en Doha</p>
       </div>
     </div>
 
@@ -1176,30 +1173,90 @@ wrapper.addEventListener("click", () => {
       </div>
       <div class="card-text">
         <h3>ARTISTA RUSA INVITADA</h3>
-        <p>Edxposicion rusa en Doha ...</p>
+        <p>Exposición de artista  rusa en Doha ...</p>
       </div>
     </div>
 
     <div class="card">
       <div class="img-box">
-        <img src="1.jpg" alt="">
+        <img src="qatar/a.jpeg" alt="">
       </div>
       <div class="card-text">
-        <h3>DOHA QATAR: PRINCIPE</h3>
-        <p>Editorial illustration enhances written content...</p>
+        <h3>VYCKY BARONA</h3>
+        <p>Embajadora de colombia en qatar </p>
       </div>
     </div>
 
     <div class="card">
+      <div class="img-box">
+        <img src="qatar/e.jpeg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>DOHA QATAR: PRINCIPE</h3>
+        <p>Reunido con el principe dubai y organizadores del evento </p>
+      </div>
+    </div>
+
+     <div class="card">
+      <div class="img-box">
+        <img src="qatar/j.jpeg" alt="">
+      </div>
+      <div class="card-text">
+        <h3> ARTISTA DE PAKISTAN EN DOHA</h3>
+        <p>Visita de artista pakistani invitada en doha</p>
+      </div>
+    </div>
+
+     <div class="card">
+      <div class="img-box">
+        <img src="qatar/k.jpeg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>ARTISTA INDIA EN EXPOSICIÓN EN DOHA</h3>
+        <p>Visita de artista india en doha</p>
+      </div>
+    </div>
+
+     <div class="card">
+      <div class="img-box">
+        <img src="qatar/m.jpeg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>ARTISTA DE ESPAÑOLA EN DOHA</h3>
+        <p>Encuentro con artista española </p>
+      </div>
+    </div>
+
+     <div class="card">
       <div class="img-box">
         <img src="2.jpg" alt="">
       </div>
       <div class="card-text">
+        <h3>EXPOSICÓN EN DOHA QATAR 2025</h3>
+        <p></p>
+      </div>
+    </div>
+
+     <div class="card">
+      <div class="img-box">
+        <img src="qatar/q.jpeg" alt="">
+      </div>
+      <div class="card-text">
         <h3>DOHA QATAR: PRINCIPE</h3>
         <p>Editorial illustration enhances written content...</p>
       </div>
     </div>
-
+    
+     <div class="card">
+      <div class="img-box">
+        <img src="qatar/p.jpeg" alt="">
+      </div>
+      <div class="card-text">
+        <h3>DOHA QATAR: PRINCIPE</h3>
+        <p>Editorial illustration enhances written content...</p>
+      </div>
+    </div>
+    
 
   </div>
   
@@ -1208,107 +1265,6 @@ wrapper.addEventListener("click", () => {
 
 
 
-
-
-
-<!-- ========== BLOQUE VIDEO VERTICAL 2 ========== -->
-
-<style>
-.video-section {
-  padding: 80px 20px;
-  background: #111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
- gap: 50px;
-}
-
-.video-wrapper {
-  width: 100%;
-  max-width: 420px; /* tamaño tipo reel */
-  aspect-ratio: 9 / 16;
-  border-radius: 25px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 0 40px #0009;
-  transition: transform .3s ease, box-shadow .3s ease;
-  cursor: pointer;
-}
-
-.video-wrapper:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 60px #000c;
-}
-
-.video-wrapper video1 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Botón Play centrado */
-.play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: #ffffffbb;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: .3s;
-  backdrop-filter: blur(4px);
-}
-
-.play-btn:hover {
-  background: #ffffffdd;
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.play-btn::before {
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 25px solid #111;
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-}
-
-/* Cuando reproduzca, ocultar botón */
-.video-wrapper.playing .play-btn {
-  display: none;
-}
-</style>
-
-<section class="video-section">
-  <div class="video-wrapper" id="videoBlock1">
-    <video id="verticalVideo" src="qatar/1.mp4"></video>
-    <div class="play-btn"></div>
-  </div>
-  <div class="video-wrapper" id="videoBlock2">
-    <video id="verticalVideo" src="qatar/2.mp4"></video>
-    <div class="play-btn"></div>
-  </div>
-</section>
-
-<script>
-const video1 = document.getElementById("verticalVideo");
-const wrapper1 = document.getElementById("videoBlock1");
-
-wrapper1.addEventListener("click", () => {
-  if (video1.paused) {
-    video1.play();
-    wrapper1.classList.add("playing");
-  } else {
-    video1.pause();
-    wrapper1.classList.remove("playing");
-  }
-});
-</script>
-<!-- ========== FIN BLOQUE VIDEO VERTICAL 2 ========== -->
 
 
 
