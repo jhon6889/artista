@@ -1191,7 +1191,7 @@ lb.addEventListener("click", () => lb.style.display = "none");
 <!-- ===== fin seccin galeria  ===== -->
 
 
-<!-- ========== BLOQUE VIDEO VERTICAL ========== -->
+<!-- ========== BLOQUE VIDEO VERTICAL (REUTILIZABLE) ========== -->
 
 <style>
 .video-section {
@@ -1200,12 +1200,13 @@ lb.addEventListener("click", () => lb.style.display = "none");
   display: flex;
   justify-content: center;
   align-items: center;
- gap: 50px;
+  gap: 50px;
+  flex-wrap: wrap;
 }
 
 .video-wrapper {
   width: 100%;
-  max-width: 420px; /* tamaño tipo reel */
+  max-width: 420px;
   aspect-ratio: 9 / 16;
   border-radius: 25px;
   overflow: hidden;
@@ -1226,7 +1227,7 @@ lb.addEventListener("click", () => lb.style.display = "none");
   object-fit: cover;
 }
 
-/* Botón Play centrado */
+/* Botón Play */
 .play-btn {
   position: absolute;
   top: 50%;
@@ -1257,34 +1258,43 @@ lb.addEventListener("click", () => lb.style.display = "none");
   border-bottom: 15px solid transparent;
 }
 
-/* Cuando reproduzca, ocultar botón */
 .video-wrapper.playing .play-btn {
   display: none;
 }
 </style>
 
 <section class="video-section">
-  <div class="video-wrapper" id="videoBlock">
-    <video id="verticalVideo" src="mineros.mp4"></video>
+
+  <!-- Video 1 -->
+  <div class="video-wrapper">
+    <video class="vertical-video" src="mineros.mp4"></video>
+    <div class="play-btn"></div>
+  </div>
+
+  <!-- Video 2 -->
+  <div class="video-wrapper">
+    <video class="vertical-video" src="video2.mp4"></video>
     <div class="play-btn"></div>
   </div>
 
 </section>
 
 <script>
-const video = document.getElementById("verticalVideo");
-const wrapper = document.getElementById("videoBlock");
+document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+  const video = wrapper.querySelector(".vertical-video");
 
-wrapper.addEventListener("click", () => {
-  if (video.paused) {
-    video.play();
-    wrapper.classList.add("playing");
-  } else {
-    video.pause();
-    wrapper.classList.remove("playing");
-  }
+  wrapper.addEventListener("click", () => {
+    if (video.paused) {
+      video.play();
+      wrapper.classList.add("playing");
+    } else {
+      video.pause();
+      wrapper.classList.remove("playing");
+    }
+  });
 });
 </script>
+
 <!-- ========== FIN BLOQUE VIDEO VERTICAL ========== -->
 
 
@@ -1488,7 +1498,7 @@ wrapper.addEventListener("click", () => {
 <section class="parallax-expoxx">
 
   <div class="parallax-content">
-    <h2>HOLA</h2>
+    <h2></h2>
   
   </div>
 
@@ -1498,7 +1508,7 @@ wrapper.addEventListener("click", () => {
 <STYle>
   .parallax-expoxx{
   height:450px;
-
+padding-top: 100px;
   background-image:url("qatar/Z.jpeg"); /* tu imagen */
   background-size:cover;
   background-position:center;
@@ -1674,7 +1684,105 @@ wrapper.addEventListener("click", () => {
 
 
 
+<!-- ========== BLOQUE VIDEO VERTICAL2========== -->
 
+<style>
+.video-section {
+  padding: 80px 20px;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.video-wrapper {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 9 / 16;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 40px #0009;
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+}
+
+.video-wrapper:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 60px #000c;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Botón Play */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: #ffffffbb;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .3s;
+  backdrop-filter: blur(4px);
+}
+
+.play-btn:hover {
+  background: #ffffffdd;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-btn::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 25px solid #111;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.video-wrapper.playing .play-btn {
+  display: none;
+}
+</style>
+
+<section class="video-section">
+
+  <!-- Video 1 -->
+  <div class="video-wrapper">
+    <video class="vertical-video" src="qatar/1.mp4"></video>
+    <div class="play-btn"></div>
+  </div>
+
+</section>
+
+<script>
+document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+  const video = wrapper.querySelector(".vertical-video");
+
+  wrapper.addEventListener("click", () => {
+    if (video.paused) {
+      video.play();
+      wrapper.classList.add("playing");
+    } else {
+      video.pause();
+      wrapper.classList.remove("playing");
+    }
+  });
+});
+</script>
+
+<!-- ========== FIN BLOQUE VIDEO VERTICAL 2 ========== -->
 
 <main>
 
