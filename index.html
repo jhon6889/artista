@@ -966,8 +966,8 @@ lb.addEventListener("click", () => lb.style.display = "none");
     <div class="gallery-item"><img src="mineros/J.jpeg" alt=""></div>
     <div class="gallery-item"><img src="mineros/H.jpeg" alt=""></div>
     <div class="gallery-item"><img src="mineros/F.jpeg" alt=""></div>
-    <div class="gallery-item"><img src="mineros/13.jpeg" alt=""></div>
-    <div class="gallery-item"><img src="mineros/14.jpeg" alt=""></div>
+    <div class="gallery-item"><img src="mineros/T.jpeg" alt=""></div>
+    <div class="gallery-item"><img src="mineros/Y.jpeg" alt=""></div>
 
 </div>
 <!-- ===== fin seccin galeria  ===== -->
@@ -982,6 +982,7 @@ lb.addEventListener("click", () => lb.style.display = "none");
   display: flex;
   justify-content: center;
   align-items: center;
+ gap: 50px;
 }
 
 .video-wrapper {
@@ -1049,6 +1050,10 @@ lb.addEventListener("click", () => lb.style.display = "none");
     <video id="verticalVideo" src="mineros.mp4"></video>
     <div class="play-btn"></div>
   </div>
+  <div class="video-wrapper" id="videoBlock">
+    <video id="verticalVideo" src="mineros.mp4"></video>
+    <div class="play-btn"></div>
+  </div>
 </section>
 
 <script>
@@ -1084,6 +1089,48 @@ wrapper.addEventListener("click", () => {
   </div>
 </section>
 <!-- ===== FIN ULTIMAS EXPOSCIONES===== -->
+
+
+
+
+
+<!-- ===== SECCIÓN PARALLAX EXPOSICIÓN 2 ===== -->
+<section class="parallax-expox">
+
+  <div class="parallax-content">
+    <h2>EXPOSICIÓN EN QATAR 2025</h2>
+  
+  </div>
+
+</section>
+
+
+<STYle>
+  .parallax-expox{
+  height:450px;
+
+  background-image:url("DOHA.jpeg"); /* tu imagen */
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  /* 🔥 EFECTO PARALLAX */
+  background-attachment:fixed;
+
+  position:relative;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+  color:#fff;
+}
+
+
+
+</STYle>
+<!-- ===== fin  SECCIÓN PARALLAX EXPOSICIÓN ===== -->
 
 
 
