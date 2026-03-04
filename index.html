@@ -1682,14 +1682,12 @@ padding-top: 100px;
 
 <!-- fin carrusel 2 -->
 
-
-
-<!-- ========== BLOQUE VIDEO VERTICAL2========== -->
+<!-- ========== BLOQUE VIDEO VERTICAL (VERSIÓN 2, 100% INDEPENDIENTE) ========== -->
 
 <style>
-.video-section {
+.video2-section {
   padding: 80px 20px;
-  background: #111;
+  background: #0e0e0e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1697,7 +1695,7 @@ padding-top: 100px;
   flex-wrap: wrap;
 }
 
-.video-wrapper {
+.video2-box {
   width: 100%;
   max-width: 420px;
   aspect-ratio: 9 / 16;
@@ -1709,80 +1707,82 @@ padding-top: 100px;
   cursor: pointer;
 }
 
-.video-wrapper:hover {
+.video2-box:hover {
   transform: scale(1.03);
   box-shadow: 0 0 60px #000c;
 }
 
-.video-wrapper video {
+.video2-box video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Botón Play */
-.play-btn {
+/* BOTÓN PLAY NUEVO */
+.video2-play {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: #ffffffbb;
+  width: 75px;
+  height: 75px;
+  background: #ffffffaa;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: .3s;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(3px);
+  transition: .3s ease;
 }
 
-.play-btn:hover {
+.video2-play:hover {
   background: #ffffffdd;
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.12);
 }
 
-.play-btn::before {
+.video2-play::before {
   content: "";
   width: 0;
   height: 0;
-  border-left: 25px solid #111;
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
+  border-left: 24px solid #111;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
 }
 
-.video-wrapper.playing .play-btn {
+.video2-box.playing .video2-play {
   display: none;
 }
 </style>
 
-<section class="video-section">
+<section class="video2-section">
 
-  <!-- Video 1 -->
-  <div class="video-wrapper">
-    <video class="vertical-video" src="qatar/1.mp4"></video>
-    <div class="play-btn"></div>
+  <!-- VIDEO NUEVO 1 -->
+  <div class="video2-box">
+    <video class="video2-file" src="video3.mp4"></video>
+    <div class="video2-play"></div>
   </div>
+
 
 </section>
 
 <script>
-document.querySelectorAll(".video-wrapper").forEach(wrapper => {
-  const video = wrapper.querySelector(".vertical-video");
+document.querySelectorAll(".video2-box").forEach(box => {
+  const video = box.querySelector(".video2-file");
 
-  wrapper.addEventListener("click", () => {
+  box.addEventListener("click", () => {
     if (video.paused) {
       video.play();
-      wrapper.classList.add("playing");
+      box.classList.add("playing");
     } else {
       video.pause();
-      wrapper.classList.remove("playing");
+      box.classList.remove("playing");
     }
   });
 });
 </script>
 
-<!-- ========== FIN BLOQUE VIDEO VERTICAL 2 ========== -->
+<!-- ========== FIN BLOQUE VIDEO VERTICAL V2 ========== -->
+
 
 <main>
 
