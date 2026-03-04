@@ -1227,7 +1227,6 @@ lb.addEventListener("click", () => lb.style.display = "none");
   object-fit: cover;
 }
 
-/* Botón Play */
 .play-btn {
   position: absolute;
   top: 50%;
@@ -1251,8 +1250,6 @@ lb.addEventListener("click", () => lb.style.display = "none");
 
 .play-btn::before {
   content: "";
-  width: 0;
-  height: 0;
   border-left: 25px solid #111;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
@@ -1265,13 +1262,11 @@ lb.addEventListener("click", () => lb.style.display = "none");
 
 <section class="video-section">
 
-  <!-- Video 1 -->
   <div class="video-wrapper">
     <video class="vertical-video" src="mineros.mp4"></video>
     <div class="play-btn"></div>
   </div>
 
-  <!-- Video 2 -->
   <div class="video-wrapper">
     <video class="vertical-video" src="video2.mp4"></video>
     <div class="play-btn"></div>
@@ -1283,7 +1278,9 @@ lb.addEventListener("click", () => lb.style.display = "none");
 document.querySelectorAll(".video-wrapper").forEach(wrapper => {
   const video = wrapper.querySelector(".vertical-video");
 
-  wrapper.addEventListener("click", () => {
+  wrapper.addEventListener("click", (event) => {
+    event.stopPropagation(); // 🔥 EVITA CHOQUES CON OTROS BLOQUES
+
     if (video.paused) {
       video.play();
       wrapper.classList.add("playing");
@@ -1294,8 +1291,6 @@ document.querySelectorAll(".video-wrapper").forEach(wrapper => {
   });
 });
 </script>
-
-<!-- ========== FIN BLOQUE VIDEO VERTICAL ========== -->
 
 
 
@@ -1718,7 +1713,6 @@ padding-top: 100px;
   object-fit: cover;
 }
 
-/* BOTÓN PLAY NUEVO */
 .video2-play {
   position: absolute;
   top: 50%;
@@ -1742,8 +1736,6 @@ padding-top: 100px;
 
 .video2-play::before {
   content: "";
-  width: 0;
-  height: 0;
   border-left: 24px solid #111;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
@@ -1756,12 +1748,10 @@ padding-top: 100px;
 
 <section class="video2-section">
 
-  <!-- VIDEO NUEVO 1 -->
   <div class="video2-box">
     <video class="video2-file" src="video3.mp4"></video>
     <div class="video2-play"></div>
   </div>
-
 
 </section>
 
@@ -1769,7 +1759,9 @@ padding-top: 100px;
 document.querySelectorAll(".video2-box").forEach(box => {
   const video = box.querySelector(".video2-file");
 
-  box.addEventListener("click", () => {
+  box.addEventListener("click", (event) => {
+    event.stopPropagation(); // 🔥 EVITA INTERFERENCIA CON OTROS BLOQUES
+
     if (video.paused) {
       video.play();
       box.classList.add("playing");
