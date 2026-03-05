@@ -2130,6 +2130,280 @@ input:checked + .sliderX-card {
   </script>
 
 </main>
+
+
+<!-- Bloque: Memorias de Ausencia - Reflexión sobre el secuestro en Colombia -->
+<section class="memoria-block">
+  <div class="memoria-container">
+    
+    <!-- Cabecera con contexto -->
+    <div class="memoria-header">
+      <span class="memoria-tag">Memoria histórica</span>
+      <h2>Huellas de la ausencia</h2>
+      <p class="memoria-description">
+        Una reflexión artística sobre las más de 50 años de secuestro en Colombia. 
+        Rostros, vacíos y resistencias que han marcado nuestra historia colectiva.
+      </p>
+    </div>
+
+    <!-- Galería con 5 imágenes -->
+    <div class="memoria-gallery">
+      
+      <!-- Foto 1: Siluetas vacías -->
+      <div class="memoria-item">
+        <img src="secuestro/1.jpg" alt="Silueta humana vacía">
+        <div class="memoria-overlay">
+          <h3>La silla vacía</h3>
+          <p>1990-2025 | 35 años de espera</p>
+        </div>
+      </div>
+
+      <!-- Foto 2: Retrato con sombra -->
+      <div class="memoria-item">
+        <img src="secuestro/2.jpg" alt="Retrato con sombra al fondo">
+        <div class="memoria-overlay">
+          <h3>El que se fue</h3>
+          <p>Óleo sobre lienzo, 2023</p>
+        </div>
+      </div>
+
+      <!-- Foto 3: Cartas sin entregar -->
+      <div class="memoria-item">
+        <img src="secuestro/3.jpg" alt="Cartas viejas apiladas">
+        <div class="memoria-overlay">
+          <h3>Cartas sin destino</h3>
+          <p>Instalación, técnica mixta</p>
+        </div>
+      </div>
+
+      <!-- Foto 4: Reloj detenido -->
+      <div class="memoria-item">
+        <img src="secuestro/4.jpg" alt="Reloj antiguo detenido">
+        <div class="memoria-overlay">
+          <h3>Tiempo suspendido</h3>
+          <p>Fotografía intervenida, 2024</p>
+        </div>
+      </div>
+
+      <!-- Foto 5: Abrazo y reencuentro -->
+      <div class="memoria-item">
+        <img src="secuestro/5.jpg" alt="Dos personas abrazándose">
+        <div class="memoria-overlay">
+          <h3>El regreso</h3>
+          <p>Acrílico sobre tela, 2025</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Texto complementario -->
+    <div class="memoria-footer">
+      <p class="memoria-texto">
+        "El arte como testigo del dolor y la esperanza. Más de 11.000 víctimas de secuestro 
+        en Colombia merecen que su memoria no se borre. Esta serie es un homenaje a quienes 
+        esperaron, a quienes regresaron y a quienes nunca volvieron."
+      </p>
+      <p class="memoria-autor">— Fernando Londoño Gil</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* Estilos independientes - solo para este bloque */
+.memoria-block {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+  padding: 80px 0;
+  margin: 0;
+  color: #ffffff;
+}
+
+.memoria-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Cabecera */
+.memoria-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.memoria-tag {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.memoria-header h2 {
+  font-size: 48px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.memoria-description {
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+  color: #cccccc;
+  font-weight: 300;
+}
+
+/* Galería */
+.memoria-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.memoria-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 3/4;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.memoria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+  filter: grayscale(60%);
+}
+
+.memoria-item:hover img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+.memoria-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  color: white;
+  padding: 30px 15px 15px;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.memoria-item:hover .memoria-overlay {
+  transform: translateY(0);
+}
+
+.memoria-overlay h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #e74c3c;
+}
+
+.memoria-overlay p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Footer del bloque */
+.memoria-footer {
+  text-align: center;
+  max-width: 800px;
+  margin: 40px auto 0;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.memoria-texto {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #cccccc;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.memoria-autor {
+  font-size: 16px;
+  color: #e74c3c;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .memoria-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .memoria-header h2 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .memoria-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .memoria-header h2 {
+    font-size: 36px;
+  }
+  
+  .memoria-description {
+    font-size: 16px;
+  }
+  
+  .memoria-texto {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .memoria-gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .memoria-block {
+    padding: 50px 0;
+  }
+  
+  .memoria-header h2 {
+    font-size: 30px;
+  }
+  
+  .memoria-overlay {
+    transform: translateY(0); /* Siempre visible en móvil */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 20px 12px 12px;
+  }
+  
+  .memoria-overlay h3 {
+    font-size: 18px;
+  }
+}
+</style>
+
+<!-- ========== footer ========== -->
+
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
@@ -2332,7 +2606,7 @@ input:checked + .sliderX-card {
   }
 }
 </style>
-
+<!-- ========== final  footer  ========== -->
 
 <script src="script.js"></script>
 </body>
