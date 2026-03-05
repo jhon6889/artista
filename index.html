@@ -275,6 +275,8 @@ modal.addEventListener("click", (e) => {
 
 
 <HR></HR>
+
+
 <!-- =============== seccion diseños ================= -->
 
 
@@ -352,7 +354,6 @@ modal.addEventListener("click", (e) => {
 }
 </style>
 
-
 <section class="gallery2-section">
   <div class="gallery2-grid">
 
@@ -370,7 +371,6 @@ modal.addEventListener("click", (e) => {
 
   </div>
 </section>
-
 
 <!-- LIGHTBOX -->
 <div class="lightbox2-overlay" id="lightbox2">
@@ -1292,7 +1292,7 @@ document.querySelectorAll(".video-wrapper").forEach(wrapper => {
 });
 </script>
 
-
+<!-- ========== BLOQUE VIDEO VERTICAL (REUTILIZABLE) ========== -->
 
 
 
@@ -1673,9 +1673,10 @@ padding-top: 100px;
 
   </div>
 </div>
-
-
 <!-- fin carrusel 2 -->
+
+
+
 
 <!-- ========== BLOQUE VIDEO VERTICAL (VERSIÓN 2, 100% INDEPENDIENTE) ========== -->
 
@@ -1726,6 +1727,7 @@ padding-top: 100px;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(3px);
+  
   transition: .3s ease;
 }
 
@@ -1776,6 +1778,317 @@ document.querySelectorAll(".video2-box").forEach(box => {
 <!-- ========== FIN BLOQUE VIDEO VERTICAL V2 ========== -->
 
 
+
+<!-- ==========  carrusel final ========== -->
+<style>
+/* RESET */
+.sliderX-container img {
+    max-width: 100%;
+}
+/* OCULTAR RADIOS */
+.sliderX-container input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+}
+/* CONTENEDOR GENERAL */
+.sliderX-container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: min(100% - 4rem, 1000px);
+    margin: 0 auto;
+    display: grid;
+    position: relative;
+    counter-reset: sliderX-counter;
+}
+/* ======================= CARD GRANDE ======================= */
+.sliderX-card {
+    --sliderX-grid-cols: auto;
+    --sliderX-grid-rows: var(--img-w) auto;
+    --sliderX-footer-justify: center;
+    grid-area: 1/1;
+    display: grid;
+    place-items: center;
+    grid-template-columns: var(--sliderX-grid-cols);
+    grid-template-rows: var(--sliderX-grid-rows);
+    gap: 2rem;
+    z-index: -1;
+    /* tamaño extra */
+    padding: 2rem;
+    border-radius: 25px;
+    background: #ffffff08;
+    backdrop-filter: blur(4px);
+    border: 1px solid #ffffff22;
+    /* sombra suave */
+    box-shadow: 0 0 30px #0008;
+}
+@media (min-width: 600px) {
+    .sliderX-card {
+        --sliderX-grid-cols: 340px auto;
+        --sliderX-grid-rows: auto;
+        --sliderX-footer-justify: start;
+    }
+}
+/* ======================= CONTENEDOR DE IMAGEN MODIFICADO ======================= */
+.sliderX-img-container {
+    width: 340px;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.2); /* fondo sutil por si la imagen no cubre todo */
+    border-radius: 15px;
+    border: 4px solid #FFF;
+    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    transition: 0.4s ease;
+    overflow: hidden; /* opcional - si quieres que las esquinas de la imagen sigan el border-radius */
+}
+
+.sliderX-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* ¡CLAVE! mantiene la proporción sin recortar */
+    rotate: var(--angle);
+    border-radius: 11px; /* un poco menos que el contenedor para que se vea el borde */
+    transform-origin: center;
+    transition: 0.4s ease;
+}
+
+/* leve zoom al entrar la card */
+input:checked + .sliderX-card .sliderX-img-container {
+    animation: sliderX-reveal 600ms forwards;
+    transform: scale(1.06);
+}
+/* ======================= DATA ======================= */
+.sliderX-data {
+    display: grid;
+    gap: 1rem;
+}
+/* Títulos + grandes */
+.sliderX-data h2 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #fff;
+}
+.sliderX-data p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #e8e8e8;
+    max-width: 340px;
+}
+.sliderX-data h2, .sliderX-data p {
+    opacity: var(--data-opacity, 0);
+    translate: 0 var(--data-y, 20px);
+    transition: 300ms ease;
+}
+/* Flechas */
+.sliderX-data footer {
+    display: flex;
+    justify-content: var(--sliderX-footer-justify);
+    gap: 1.5rem;
+    margin-top: 10px;
+}
+.sliderX-data footer label {
+    cursor: pointer;
+    opacity: var(--data-opacity, 0);
+    pointer-events: var(--card-events, none);
+    background: #FFF;
+    width: 40px; /* más grande */
+    height: 40px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    box-shadow: 0 4px 10px #0004;
+    transition: .2s;
+}
+.sliderX-data footer label:hover {
+    transform: scale(1.15);
+    background: #f0f0f0;
+}
+/* CARD ACTIVA */
+input:checked + .sliderX-card {
+    z-index: 10;
+    --data-opacity: 1;
+    --data-y: 0;
+    --card-events: auto;
+}
+/* ANIMACIÓN */
+@keyframes sliderX-reveal {
+    50% { translate: -150% 0; --angle: 0deg; }
+}
+/* Z-INDEX */
+.sliderX-card {
+    z-index: -1;
+}
+input:checked + .sliderX-card {
+    z-index: 10;
+}
+</style>
+
+<div class="sliderX-container">
+    <!-- CARD 1 -->
+    <input type="radio" id="sliderX-radio-1" name="sliderX-radio" checked>
+    <article class="sliderX-card" style="--angle:4deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/1.jpg">
+        </div>
+        <div class="sliderX-data">
+            <span class="sliderX-num">1/9</span>
+            <h2 style="color: #0e0e0e;">Fernando Londoño</h2>
+          <p style="color: #0e0e0e;">"Homenaje a los grandes escultores y pintores que marcaron su trayectoria. 
+            Una exploración personal entre la figuración y la abstracción .</p>
+            <footer>
+                <label for="sliderX-radio-9">&#10094;</label>
+                <label for="sliderX-radio-2">&#10095;</label>
+            </footer>
+        </div>
+    </article>
+    
+    <!-- CARD 2 -->
+    <input type="radio" id="sliderX-radio-2" name="sliderX-radio">
+    <article class="sliderX-card" style="--angle:-8deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/2.jpg">
+        </div>
+        <div class="sliderX-data">
+           <span class="sliderX-num">2/9</span>
+<h2 style="color: #0e0e0e;">Homenaje a mis padres</h2>
+<p style="color: #0e0e0e;">A ellos, que me enseñaron el valor del arte, el trabajo y las raíces. Por su amor, 
+  su apoyo incondicional y por sembrar en mí la semilla que hoy florece en cada obra.</p>
+            <footer>
+                <label for="sliderX-radio-1">&#10094;</label>
+                <label for="sliderX-radio-3">&#10095;</label>
+            </footer>
+        </div>
+    </article>
+    
+    <!-- CARD 3 -->
+    <input type="radio" id="sliderX-radio-3" name="sliderX-radio">
+    <article class="sliderX-card" style="--angle:-4deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/3.jpg">
+        </div>
+        <div class="sliderX-data">
+            <span class="sliderX-num">3/9</span>
+            <h2 style="color: #0e0e0e;">Fernando Londoño & Julio Londoño</h2>
+            <p style="color: #0e0e0e;">"Herencia de forma" - Homenaje al padre y primer maestro. Diálogo íntimo entre la obra del escultor Julio Londoño y la reinterpretación de su hijo Fernando, explorando la transmisión del oficio y la sensibilidad artística.</p>
+            <footer>
+                <label for="sliderX-radio-2">&#10094;</label>
+                <label for="sliderX-radio-4">&#10095;</label>
+            </footer>
+        </div>
+    </article>
+    
+    <!-- CARD 4 -->
+    <input type="radio" id="sliderX-radio-4" name="sliderX-radio">
+    <article class="sliderX-card" style="--angle:6deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/4.jpg">
+        </div>
+        <div class="sliderX-data">
+            <span class="sliderX-num">4/9</span>
+            
+            <footer>
+                <label for="sliderX-radio-3">&#10094;</label>
+                <label for="sliderX-radio-5">&#10095;</label>
+            </footer>
+        </div>
+    </article>
+    
+    <!-- CARD 5 -->
+    <input type="radio" id="sliderX-radio-5" name="sliderX-radio">
+    <article class="sliderX-card" style="--angle:-3deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/5.jpg">
+        </div>
+        <div class="sliderX-data">
+            <span class="sliderX-num">5/9</span>
+         <h2 style="color: #0e0e0e;">Fernando Londoño & Rodrigo Arenas Betancourt</h2>
+            <p style="color: #0e0e0e;">"Monumentos del alma" - Tributo al maestro de Fredonia . Diálogo con la fuerza expresiva del creador de "El Bolívar desnudo" y "Los lanceros del Pantano de Vargas". La monumentalidad y el dramatismo areniano reinterpretados en formatos de caballete.</p>
+            <footer>
+                <label for="sliderX-radio-4">&#10094;</label>
+                <label for="sliderX-radio-6">&#10095;</label>
+            </footer>
+        </div>
+    </article>
+    
+    <!-- CARD 6 -->
+    <input type="radio" id="sliderX-radio-6" name="sliderX-radio">
+    <article class="sliderX-card" style="--angle:2deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/6.jpg">
+        </div>
+        <div class="sliderX-data">
+            <span class="sliderX-num">6/9</span>
+            <h2 style="color: #0e0e0e;">Fernando Londoño & Eladio Gil Zambrana</h2>
+            <p style="color: #0e0e0e;">"Costas compartidas" - Homenaje al maestro hispano-colombiano, creador de la India Catalina . Londoño explora la síntesis entre la tradición escultórica española y la calidez del Caribe colombiano que Gil Zambrana supo fusionar en su obra.</p>
+            <footer>
+                <label for="sliderX-radio-5">&#10094;</label>
+                <label for="sliderX-radio-7">&#10095;</label>
+            </footer>
+        </div>
+    </article>
+    
+    <!-- CARD 7 -->
+    <input type="radio" id="sliderX-radio-7" name="sliderX-radio">
+    <article class="sliderX-card" style="--angle:-5deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/7.jpg">
+        </div>
+        <div class="sliderX-data">
+            <span class="sliderX-num">7/9</span>
+              <h2 style="color: #0e0e0e;">Fernando Londoño & Enrique Grau</h2>
+              <p style="color: #0e0e0e;">"Mestizajes" - Interpretación de la obra del maestro cartagenero. Diálogo con sus icónicas figuras amerindias y afrocolombianas, sus mulatas y sus sombreros de rosas. Un encuentro entre la costa Caribe y la región andina.</p>
+              <footer>
+                <label for="sliderX-radio-6">&#10094;</label>
+                <label for="sliderX-radio-8">&#10095;</label>
+              </footer>
+        </div>
+    </article>
+    
+    <!-- CARD 8 -->
+    <input type="radio" id="sliderX-radio-8" name="sliderX-radio">
+    <article class="sliderX-card" style="--angle:3deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/8.jpg">
+        </div>
+        <div class="sliderX-data">
+            <span class="sliderX-num">8/9</span>
+            <h2 style="color: #0e0e0e;">Fernando Londoño & los maestros</h2>
+            <p style="color: #0e0e0e;">"Genealogías del arte antioqueño" - Composición que reúne simbólicamente. Una constelación de influencias y legados en la obra de Fernando Londoño.</p>
+            <footer>
+                <label for="sliderX-radio-7">&#10094;</label>
+                <label for="sliderX-radio-9">&#10095;</label>
+            </footer>
+        </div>
+    </article>
+    
+    <!-- CARD 9 -->
+    <input type="radio" id="sliderX-radio-9" name="sliderX-radio">
+    <article class="sliderX-card" style="--angle:-2deg">
+        <div class="sliderX-img-container">
+            <img class="sliderX-img" src="personales/9.jpg">
+        </div>
+        <div class="sliderX-data">
+            <span class="sliderX-num">9/9</span>
+            <h2 style="color: #0e0e0e;">Fernando Londoño & Salvador Arango </h2>
+<p style="color: #0e0e0e;">"Geometrías vitales" - Homenaje al escultor de Itagüí . Exploración del lenguaje geométrico-conceptual que caracteriza la obra de SAAR, con sus volúmenes depurados en bronce, piedra y acero, llevados al plano pictórico.</p>
+            <footer>
+                <label for="sliderX-radio-8">&#10094;</label>
+                <label for="sliderX-radio-1">&#10095;</label>
+            </footer>
+        </div>
+    </article>
+</div>
+<!-- ========== final  carrusel final ========== -->
+
+
 <main>
 
   <!-- LIGHTBOX -->
@@ -1812,6 +2125,8 @@ document.querySelectorAll(".video2-box").forEach(box => {
     <p>© 2026 Fernando Londoño Gil — Todos los derechos reservados</p>
   </div>
 </footer>
+
+
 
 
 
