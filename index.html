@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Artista</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body>
@@ -1001,8 +1003,6 @@ lb.addEventListener("click", () => lb.style.display = "none");
 
 
 
-
-
 <!-- ===== SERIES / GALERÍA ===== -->
 <section class="series">
   <div class="container series-grid">
@@ -1096,8 +1096,6 @@ lb.addEventListener("click", () => lb.style.display = "none");
 
   </div>
 </section>
-
-
 
 
 <!-- ===== SECCIÓN GALERIA MINEROS 2  ===== -->
@@ -2132,17 +2130,208 @@ input:checked + .sliderX-card {
   </script>
 
 </main>
-
-
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
-    <p>© 2026 Fernando Londoño Gil — Todos los derechos reservados</p>
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3 class="footer-title">Fernando Londoño Gil</h3>
+        <p class="footer-description">Artista plástico contemporáneo. Explorando la expresión visual a través de técnicas mixtas y la conexión entre el arte y la emoción humana.</p>
+        <p class="footer-email">📧 contacto@fernandolondono.art</p>
+      </div>
+      
+      <div class="footer-social">
+        <h4>Sígueme en redes</h4>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Twitter/X">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+       
+     
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">© 2026 Fernando Londoño Gil — Todos los derechos reservados</p>
+      <p class="footer-credits">Diseño y arte por CODIUS WEB</p>
+    </div>
   </div>
 </footer>
 
+<style>
+  .footer {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #ffffff;
+  padding: 60px 0 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.footer-info {
+  max-width: 600px;
+}
+
+.footer-title {
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+}
+
+.footer-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cccccc;
+  margin-bottom: 20px;
+}
+
+.footer-email {
+  font-size: 16px;
+  color: #ff6b6b;
+  margin-top: 15px;
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.footer-email:hover {
+  background: rgba(255, 107, 107, 0.2);
+  transform: translateY(-2px);
+}
+
+.footer-social h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background: #ff6b6b;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #999999;
+}
+
+.footer-credits {
+  font-size: 14px;
+  color: #666666;
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .footer-info {
+    max-width: 100%;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .footer-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-title {
+    text-align: center;
+  }
+  
+  .footer-description {
+    text-align: center;
+  }
+  
+  .footer-email {
+    display: block;
+    text-align: center;
+  }
+  
+  .footer-social h4 {
+    text-align: center;
+  }
+}
+</style>
 
 
 <script src="script.js"></script>
